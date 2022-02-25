@@ -24,8 +24,9 @@ Route::get('/', [HomeController::class, 'index']);
 
 //Route::view('/projects', 'projects.index');
 
-Route::get('/projects', [ProjectController:: class, 'index']);
-Route::get('/projects/create', [ProjectController:: class, 'create']);
-Route::get('/projects/1', [ProjectController:: class, 'detail'])->name('foo');
-Route::get('/projects/1/tracks/create', [ProjectController:: class, 'create_tracks']);
+Route::get('/projects', [ProjectController::class, 'index']);
+Route::get('/projects/create', [ProjectController::class, 'create']);
+Route::post('/projects/create', [ProjectController::class, 'store']);
+Route::get('/projects/{id}', [ProjectController::class, 'detail'])->name('foo');
+Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_tracks']);
 //Route::get('/transposer', [TransposerController:: class, 'index']);

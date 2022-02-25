@@ -33,9 +33,15 @@ class ProjectController extends Controller
       return view('projects/create');
     }
 
-    public function detail()
+    public function store(Request $request)
     {
-      return view('projects/detail');
+        dd($request);
+    }
+
+    public function detail($id, Request $request)
+    {
+        dd($id);
+        return view('projects/detail');
     }
 
     public function create_tracks()
