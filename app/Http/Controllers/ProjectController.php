@@ -8,6 +8,7 @@ class ProjectController extends Controller
 {
     public function index()
     {
+
         $projects = [
             [
                 'id'          => 1,
@@ -31,6 +32,31 @@ class ProjectController extends Controller
     public function create()
     {
       return view('projects/create');
+    }
+
+    public function edit($id) {
+        $project = [
+            'id'          => $id,
+            'name'        => 'Project' . $id,
+            'description' => 'Description' . $id,
+            'image_url'      => 'http://web1.sthgrafton-h.schools.nsw.edu.au/wp-content/uploads/2015/08/MusicWorkShop-Image.jpg',
+        ];
+
+        return view('projects/edit', [
+            'project' => $project
+        ]);
+    }
+
+
+    public function update($id, Request $request) {
+
+        $request->validate([
+            'name' => 'required',
+            'description' => 'nullable',
+            'image_url' => 'nullable|url'
+        ]);
+
+        dd($request);
     }
 
     public function store(Request $request)
