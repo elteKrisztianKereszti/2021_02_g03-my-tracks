@@ -16,19 +16,21 @@ use App\Http\Controllers\TransposerController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/', [HomeController::class, 'index']);
+Route::view('/about', 'about')->name('about');
+// Projects
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.list');
 
-//Route::view('/projects', 'projects.index');
+Route::get('/projects/{id}/show', [ProjectController::class, 'show'] )->name('projects.show');
 
-Route::get('/projects', [ProjectController::class, 'index']);
-Route::get('/projects/create', [ProjectController::class, 'create']);
-Route::post('/projects/create', [ProjectController::class, 'store']);
-Route::get('/projects/{id}', [ProjectController::class, 'detail']);
-Route::get('/projects/{id}/edit', [ProjectController::class, 'edit']);
-Route::put('/projects/{id}', [ProjectController::class, 'update']);
+Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
+Route::post('projects/create', [ProjectController::class, 'store'] )->name('projects.store');
+
+Route::get('/projects/{id}/edit', [ProjectController::class, 'edit'] )->name('projects.edit');
+Route::put('/projects/{id}', [ProjectController::class, 'update'] )->name('projects.update');
+
 Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_tracks']);
+
+// Transposer
 //Route::get('/transposer', [TransposerController:: class, 'index']);

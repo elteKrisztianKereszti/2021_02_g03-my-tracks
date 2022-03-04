@@ -29,9 +29,26 @@ class ProjectController extends Controller
         ]);
     }
 
+    public function show($id, Request $request)
+    {
+        dd($id);
+        return view('projects/detail');
+    }
+
     public function create()
     {
       return view('projects/create');
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'description' => 'nullable',
+            'image_url' => 'nullable|url'
+        ]);
+
+        dd($request);
     }
 
     public function edit($id) {
@@ -57,23 +74,6 @@ class ProjectController extends Controller
         ]);
 
         dd($request);
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'nullable',
-            'image_url' => 'nullable|url'
-        ]);
-
-        dd($request);
-    }
-
-    public function detail($id, Request $request)
-    {
-        dd($id);
-        return view('projects/detail');
     }
 
     public function create_tracks()
