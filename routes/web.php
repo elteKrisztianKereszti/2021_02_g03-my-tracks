@@ -33,4 +33,4 @@ Route::put('/projects/{id}', [ProjectController::class, 'update'] )->name('proje
 Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_tracks']);
 
 // Transposer
-//Route::get('/transposer', [TransposerController:: class, 'index']);
+Route::get('/transposer', [TransposerController:: class, 'index'])->name('transposer');
