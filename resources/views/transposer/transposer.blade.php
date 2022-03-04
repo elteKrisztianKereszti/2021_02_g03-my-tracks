@@ -2,11 +2,11 @@
 
 @section('content')
     <h2>Transposer</h2>
-    <form action="" method="get">
+    <form action="" method="post">
+      @csrf
       <div class="form-group">
         <label for="key">Key</label>
-        <input type="text" name="key" class="form-control" id="key" value="C">
-        <!-- <select name="key" id="key" class="form-control">
+        <select name="key" id="key" class="form-control @error('key') is-invalid @enderror" >
           <option>C</option>
           <option>C#</option>
           <option>D</option>
@@ -19,20 +19,27 @@
           <option>A</option>
           <option>A#</option>
           <option>H</option>
-        </select> -->
-        <div class="invalid-feedback">
-          Error
-        </div>
+        </select>
+        @error('key')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+        @enderror
       </div>
       <div class="form-group">
         <label for="distance">Distance</label>
-        <input type="text" name="distance" class="form-control" id="distance" value="1">
-        <div class="invalid-feedback">
-          Error
-        </div>
+        <input type="text" name="distance" class="form-control @error('distance') is-invalid @enderror" id="distance" value="1">
+        @error('distance')
+          <div class="invalid-feedback">
+            {{ $message }}
+          </div>
+        @enderror
+
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <p>New key is C#.</p>
+    @if (isset($newKey))
+    <p>New key is {{ $newKey }}.</p>
+    @endif
 
   @endsection

@@ -34,3 +34,4 @@ Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_track
 
 // Transposer
 Route::get('/transposer', [TransposerController:: class, 'index'])->name('transposer');
+Route::post('/transposer', [TransposerController:: class, 'transpose'])->name('dotransposer');
