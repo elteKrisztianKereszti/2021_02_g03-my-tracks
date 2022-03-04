@@ -15,9 +15,8 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show($id, Request $request)
+    public function show(Project $project)
     {
-        $project = Project::findOrFail($id);
         return view('projects/detail', [
             'project' => $project
         ]);
@@ -40,16 +39,13 @@ class ProjectController extends Controller
         return redirect()->route('projects.show', $id);
     }
 
-    public function edit($id) {
-        $project = Project::findOrFail($id);
-
+    public function edit(Project $project) {
         return view('projects/edit', [
             'project' => $project
         ]);
     }
 
-    public function update($id, Request $request) {
-        $project = Project::findOrFail($id);
+    public function update(Project $project, Request $request) {
         $validate_data = $request->validate([
             'name' => 'required',
             'description' => 'nullable',
@@ -57,7 +53,7 @@ class ProjectController extends Controller
         ]);
 
         $project->update($validate_data);
-        return redirect()->route('projects.show', $id);
+        return redirect()->route('projects.show', $project->id);
     }
 
     public function create_tracks()
