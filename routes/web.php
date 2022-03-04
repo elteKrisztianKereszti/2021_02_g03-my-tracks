@@ -30,7 +30,7 @@ Route::post('projects/create', [ProjectController::class, 'store'] )->name('proj
 Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'] )->name('projects.edit');
 Route::put('/projects/{project}', [ProjectController::class, 'update'] )->name('projects.update');
 
-Route::get('/projects/1/tracks/create', [ProjectController::class, 'create_tracks']);
+Route::delete('/projects/{project}', [ProjectController::class, 'delete'] )->name('projects.delete');
 
 // Transposer
 Route::get('/transposer', [TransposerController:: class, 'index'])->name('transposer');

@@ -6,6 +6,11 @@
       <p>{{ $project['description'] }}</p>
 
       <a href="{{ route('projects.edit', $project['id']) }}"  class="btn btn-primary">Edit</a>
+      <form action="{{ route('projects.delete', $project['id']) }}" method="POST" class="d-inline">
+        @csrf
+        @method('DELETE')
+        <button type="submit"  class="btn btn-danger">Delete</button>
+      </form>
       <a href="new-track.html" class="btn btn-primary">Add new track</a>
       <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action" style="background-color: #bbb7b4">

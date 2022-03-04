@@ -56,8 +56,9 @@ class ProjectController extends Controller
         return redirect()->route('projects.show', $project->id);
     }
 
-    public function create_tracks()
+    public function delete(Project $project)
     {
-      return view('projects/create_tracks');
+        $project->delete();
+        return redirect()->route('projects.list');
     }
 }
