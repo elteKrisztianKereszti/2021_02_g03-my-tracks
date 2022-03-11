@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FooController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
@@ -20,17 +21,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::view('/about', 'about')->name('about');
 // Projects
-Route::get('/projects', [ProjectController::class, 'index'])->name('projects.list');
 
-Route::get('/projects/{project}/show', [ProjectController::class, 'show'] )->name('projects.show');
+Route::resource('projects', ProjectController::class);
 
-Route::get('/projects/create', [ProjectController::class, 'create'])->name('projects.create');
-Route::post('projects/create', [ProjectController::class, 'store'] )->name('projects.store');
-
-Route::get('/projects/{project}/edit', [ProjectController::class, 'edit'] )->name('projects.edit');
-Route::put('/projects/{project}', [ProjectController::class, 'update'] )->name('projects.update');
-
-Route::delete('/projects/{project}', [ProjectController::class, 'delete'] )->name('projects.delete');
+//Route::resource('foos', FooController::class);
 
 // Transposer
 Route::get('/transposer', [TransposerController:: class, 'index'])->name('transposer');
