@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -18,6 +17,9 @@ class ProjectSeeder extends Seeder
     {
         //
         DB::table('projects')->truncate();
-        Project::factory()->count(15)->create();
+        Project::factory()
+            ->count(15)
+            ->hasTracks(5)
+            ->create();
     }
 }
