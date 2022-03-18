@@ -14,12 +14,11 @@
       <a href="new-track.html" class="btn btn-primary">Add new track</a>
       <div class="list-group">
           @foreach ($project->tracks as $track)
-            <a href="#" class="list-group-item list-group-item-action" style="background-color: #bbb7b4">
+            <a href="#" class="list-group-item list-group-item-action" style="background-color: {{ $track->color }}">
                 <p class="d-flex justify-content-between align-items-center">
                 <span>
                     {{ $track->name }}
                     <small>{{ $track->filename }}</small>
-                    <small>{{ $track->color }}</small>
                 </span>
                 <span class="badge badge-primary badge-pill">Muted</span>
                 </p>
@@ -30,7 +29,5 @@
                 </ul>
             </a>
           @endforeach
-
-
       </div>
 @endsection
