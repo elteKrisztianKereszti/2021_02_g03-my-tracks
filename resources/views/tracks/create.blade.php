@@ -1,9 +1,9 @@
 @extends('layouts.base')
 
 @section('content')
-      <h2>New track</h2>
-      <form>
-
+      <h2>New track {{ $project->id }}</h2>
+      <form method="{{ route('projects.tracks.store', $project->id) }}" action="POST">
+        @csrf
         <div class="form-group">
           <label for="name">Track name</label>
           <input type="text" class="form-control" id="name" placeholder="">

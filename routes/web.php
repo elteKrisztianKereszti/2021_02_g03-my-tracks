@@ -4,6 +4,7 @@ use App\Http\Controllers\FooController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TrackController;
 use App\Http\Controllers\TransposerController;
 
 /*
@@ -23,6 +24,7 @@ Route::view('/about', 'about')->name('about');
 // Projects
 
 Route::resource('projects', ProjectController::class);
+Route::resource('projects.tracks', TrackController::class)->shallow()->except(['index']);
 
 //Route::resource('foos', FooController::class);
 
