@@ -1,12 +1,12 @@
 @extends('layouts.base')
 
 @section('content')
-      <h2>{{ $project['name'] }}</h2>
-      <img src="{{ $project['image_url'] }}">
-      <p>{{ $project['description'] }}</p>
+      <h2>{{ $project->name }}</h2>
+      <img src="{{ $project->image_url }}">
+      <p>{{ $project->description }}</p>
 
-      <a href="{{ route('projects.edit', $project['id']) }}"  class="btn btn-primary">Edit</a>
-      <form action="{{ route('projects.destroy', $project['id']) }}" method="POST" class="d-inline">
+      <a href="{{ route('projects.edit', $project->id) }}"  class="btn btn-primary">Edit</a>
+      <form action="{{ route('projects.destroy', $project->id) }}" method="POST" class="d-inline">
         @csrf
         @method('DELETE')
         <button type="submit"  class="btn btn-danger">Delete</button>

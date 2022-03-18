@@ -15,7 +15,7 @@
         class="form-control @error('name') is-invalid @enderror"
         id="name"
         placeholder=""
-        value="{{ old('name', $project['name'] ) }}">
+        value="{{ old('name', $project->name ) }}">
 
     @error('name')
     <div class="invalid-feedback">
@@ -30,7 +30,7 @@
         name="description"
         class="form-control @error('description') is-invalid @enderror"
         id="description"
-        rows="3">{{ old('description', $project['description'])  }}</textarea>
+        rows="3">{{ old('description', $project->description)  }}</textarea>
 
     @error('description')
     <div class="invalid-feedback">
@@ -47,7 +47,7 @@
         class="form-control @error('image_url') is-invalid @enderror"
         id="image_url"
         placeholder=""
-        value="{{ old('image_url', $project['image_url']) }}">
+        value="{{ old('image_url', $project->image_url) }}">
 
     @error('image_url')
     <div class="invalid-feedback">
