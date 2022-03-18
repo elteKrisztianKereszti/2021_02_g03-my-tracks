@@ -49,7 +49,7 @@
 
 
         <div class="form-group">
-          <button type="submit" class="btn btn-primary">Add new track</button>
+          <button type="submit" class="btn btn-primary">Update track</button>
         </div>
 
       </form>
