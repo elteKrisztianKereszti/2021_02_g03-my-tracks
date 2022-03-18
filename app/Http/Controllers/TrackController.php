@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Track;
 use App\Http\Requests\StoreTrackRequest;
 use App\Http\Requests\UpdateTrackRequest;
+use App\Models\Filter;
 use App\Models\Project;
 
 class TrackController extends Controller
@@ -16,8 +17,11 @@ class TrackController extends Controller
      */
     public function create(Project $project)
     {
+        $filters = Filter::all();
+
         return view('tracks.create', [
-            'project' => $project
+            'project' => $project,
+            'filters' => $filters
         ]);
     }
 
