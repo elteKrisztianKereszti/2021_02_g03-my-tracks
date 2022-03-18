@@ -68,7 +68,10 @@ class TrackController extends Controller
      */
     public function update(UpdateTrackRequest $request, Track $track)
     {
-        //
+        $validated_data = $request->validated();
+        $track->update($validated_data);
+
+        return redirect()->route('projects.show', $track->project_id);
     }
 
     /**
