@@ -36,17 +36,6 @@ class TrackController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Track  $track
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Track $track)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Track  $track
