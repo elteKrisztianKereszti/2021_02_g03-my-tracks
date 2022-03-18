@@ -27,9 +27,13 @@ class TrackController extends Controller
      * @param  \App\Http\Requests\StoreTrackRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTrackRequest $request)
+    public function store(Project $project, StoreTrackRequest $request)
     {
-        //
+        dd($request);
+        // $validated_data = $request->validated();
+        // $project->tracks()->create($validated_data);
+
+        //return redirect()->route('projects.show', $project->id);
     }
 
     /**

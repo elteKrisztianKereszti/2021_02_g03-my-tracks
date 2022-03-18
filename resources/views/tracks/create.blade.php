@@ -1,31 +1,37 @@
 @extends('layouts.base')
 
 @section('content')
-      <h2>New track {{ $project->id }}</h2>
-      <form method="{{ route('projects.tracks.store', $project->id) }}" action="POST">
+      <h2>New track</h2>
+      <form action="{{ route('projects.tracks.store', $project->id) }}" method="POST">
         @csrf
         <div class="form-group">
           <label for="name">Track name</label>
-          <input type="text" class="form-control" id="name" placeholder="">
+          <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="" value="{{ old('name', '') }}">
+          @error('name')
           <div class="invalid-feedback">
-            Please choose a username.
+            {{ $message }}
           </div>
+          @enderror
         </div>
 
         <div class="form-group">
           <label for="file">Audio file</label>
-          <input type="file" class="form-control-file" id="file" placeholder="">
+          <input name="file" type="file" class="form-control-file @error('file') is-invalid @enderror" id="file" placeholder="">
+          @error('file')
           <div class="invalid-feedback">
-            Please choose a username.
+            {{ $message }}
           </div>
+          @enderror
         </div>
 
         <div class="form-group">
           <label for="color">Color</label>
-          <input type="color" class="form-control" id="color" placeholder="">
+          <input name="color" type="color" class="form-control @error('color') is-invalid @enderror" id="color" placeholder="" value="{{ old('color', '') }}">
+          @error('color')
           <div class="invalid-feedback">
-            Please choose a username.
+            {{ $message }}
           </div>
+          @enderror
         </div>
 
         <div class="form-group d-flex">
