@@ -29,11 +29,10 @@ class TrackController extends Controller
      */
     public function store(Project $project, StoreTrackRequest $request)
     {
-        dd($request);
-        // $validated_data = $request->validated();
-        // $project->tracks()->create($validated_data);
+        $validated_data = $request->validated();
+        $project->tracks()->create($validated_data);
 
-        //return redirect()->route('projects.show', $project->id);
+        return redirect()->route('projects.show', $project->id);
     }
 
     /**
@@ -55,7 +54,9 @@ class TrackController extends Controller
      */
     public function edit(Track $track)
     {
-        //
+        return view('tracks.edit', [
+            'track' => $track
+        ]);
     }
 
     /**
