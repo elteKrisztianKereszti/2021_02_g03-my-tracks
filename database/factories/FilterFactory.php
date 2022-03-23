@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Filter;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +15,13 @@ class FilterFactory extends Factory
      *
      * @return array
      */
+
+    protected $model = Filter::class;
+
     public function definition()
     {
         return [
-            'name' => $this->faker->word
+            'name' => $this->faker->numerify('Filter ##')
         ];
     }
 }

@@ -15,6 +15,7 @@ class FilterSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('filter_track')->truncate();
         DB::table('filters')->truncate();
         Filter::factory(10)->create();
     }

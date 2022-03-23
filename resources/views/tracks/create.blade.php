@@ -34,7 +34,7 @@
           @enderror
         </div>
 
-        <div class="form-group d-flex">
+        <div class="form-group d-flex flex-wrap">
             @foreach ($filters as $filter)
             <div class="custom-control custom-switch col-sm-2">
                 <input name="filters[]" value="{{ $filter->id }}" type="checkbox" class="custom-control-input" id="filter{{ $filter->id }}">

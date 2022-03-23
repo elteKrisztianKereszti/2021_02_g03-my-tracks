@@ -18,6 +18,6 @@ class Track extends Model
 
     public function filters()
     {
-        return $this->hasMany(Filter::class);
+        return $this->belongsToMany(Filter::class);
     }
 }

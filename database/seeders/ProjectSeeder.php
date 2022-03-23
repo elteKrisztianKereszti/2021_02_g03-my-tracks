@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Filter;
 use App\Models\Project;
+use App\Models\Track;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -17,9 +19,31 @@ class ProjectSeeder extends Seeder
     {
         //
         DB::table('projects')->truncate();
-        Project::factory()
-            ->count(15)
-            ->hasTracks(5)
-            ->create();
+
+        $filters = Filter::all();
+
+        // Project::factory()
+        //     ->count(15)
+        //     ->hasTracks(5)->each(function ($track) use ($filters) {
+        //              for ($i = 0; $i < random_int(1, 4); $i++) {
+        //                $track->filters()->toggle($filters[random_int(0, 9)]);
+        //              }
+        //            })
+        //     ->create();
+
+
+
+        Project::factory(10)
+            ->create()
+            ->each(function ($project) use ($filters) {
+                $project->tracks()->createMany(
+                    Track::factory(5)->make()->toArray()
+                )->each(function ($track) use ($filters) {
+                    for ($i = 0; $i < random_int(1, 4); $i++) {
+                        $track->filters()->toggle($filters[random_int(0, 9)]);
+                    }
+          });
+        });
+
     }
 }

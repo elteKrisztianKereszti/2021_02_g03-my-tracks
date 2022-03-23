@@ -10,4 +10,9 @@ class Filter extends Model
     use HasFactory;
 
     protected $fillable = [ 'name' ];
+
+    public function filters()
+    {
+        return $this->belongsToMany(Track::class);
+    }
 }
