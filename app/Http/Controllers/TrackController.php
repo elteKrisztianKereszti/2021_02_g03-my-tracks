@@ -47,8 +47,10 @@ class TrackController extends Controller
      */
     public function edit(Track $track)
     {
+        $filters = Filter::all();
         return view('tracks.edit', [
-            'track' => $track
+            'track' => $track,
+            'filters' => $filters
         ]);
     }
 
@@ -63,7 +65,7 @@ class TrackController extends Controller
     {
         $validated_data = $request->validated();
         $track->update($validated_data);
-
+        $track->filters()->sync($validated_data['filters'] ?? []);
         return redirect()->route('projects.show', $track->project_id);
     }
 
