@@ -11,7 +11,7 @@ class Filter extends Model
 
     protected $fillable = [ 'name' ];
 
-    public function filters()
+    public function tracks()
     {
         return $this->belongsToMany(Track::class);
     }

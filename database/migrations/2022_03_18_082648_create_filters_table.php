@@ -25,7 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('track_id');
             $table->timestamps();
 
-            $table->unique('filter_id', 'track_id');
+            $table->unique(['filter_id', 'track_id']);
             $table->foreign('filter_id')->references('id')->on('filters')->onDelete('cascade');
             $table->foreign('track_id')->references('id')->on('tracks')->onDelete('cascade');
         });
