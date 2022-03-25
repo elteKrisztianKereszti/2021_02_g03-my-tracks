@@ -5,8 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/united/bootstrap.min.css">
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <title>Music project</title>
   </head>
@@ -17,11 +23,43 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        <div class="navbar-nav">
+          <!-- Left Side Of Navbar -->
+        <div class="navbar-nav me-auto">
           <a class="nav-item nav-link" href="{{ route('projects.index') }}">Projects</a>
           <a class="nav-item nav-link" href="{{ route('transposer') }}">Transposer</a>
           <a class="nav-item nav-link" href="{{ route('projects.create') }}">New project</a>
           <a class="nav-item nav-link" href="{{ route('about') }}">About</a>
+        </div>
+        <!-- Right Side Of Navbar -->
+        <div class="navbar-nav ml-auto">
+            <!-- Authentication Links -->
+            @guest
+                @if (Route::has('login'))
+                    <a class="nav-item nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                @endif
+
+                @if (Route::has('register'))
+                    <a class="nav-item nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                @endif
+            @else
+                <div class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-item nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="nav-item dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </div>
+            @endguest
         </div>
       </div>
     </nav>
