@@ -20,6 +20,8 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
+        $this->authorize('view', $project);
+
         return view('projects/detail', [
             'project' => $project
         ]);
@@ -39,12 +41,16 @@ class ProjectController extends Controller
     }
 
     public function edit(Project $project) {
+        $this->authorize('update', $project);
+
         return view('projects/edit', [
             'project' => $project
         ]);
     }
 
     public function update(Project $project, ProjectFormRequest $request) {
+        $this->authorize('update', $project);
+
         $validate_data = $request->validated();
         $project->update($validate_data);
         return redirect()->route('projects.show', $project->id);
@@ -52,6 +58,8 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
+        $this->authorize('delete', $project);
+
         $project->delete();
         return redirect()->route('projects.index');
     }
