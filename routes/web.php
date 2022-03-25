@@ -23,8 +23,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::view('/about', 'about')->name('about');
 // Projects
 
-Route::resource('projects', ProjectController::class);
-Route::resource('projects.tracks', TrackController::class)->shallow()->except(['index']);
+Route::resource('projects', ProjectController::class)->middleware('auth');
+Route::resource('projects.tracks', TrackController::class)->shallow()->except(['index'])->middleware('auth');
 
 //Route::resource('foos', FooController::class);
 
@@ -34,4 +34,3 @@ Route::post('/transposer', [TransposerController:: class, 'transpose'])->name('d
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
